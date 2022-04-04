@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  tanjalo_web:
+    container_name: tanjalo
+    image: tanjalo
+    build:
+      context: tanjalo_web
+      dockerfile: Dockerfile.dev
+      target: development
+    volumes:
+      - ./tanjalo_web/src:/tanjalo_web/src
+    ports:
+      - 3002:3002

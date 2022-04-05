@@ -3,6 +3,7 @@ import PrivateRoute from "./privateRoute";
 
 import LayoutHome from "Layout/home";
 import Home from "pages/home";
+import NotFound from "components/notFound";
 
 const routes: RouteObject[] = [
   {
@@ -20,7 +21,7 @@ const routes: RouteObject[] = [
     ]
   },
   {
-    element: <div>404 | Not Found!</div>,
+    element: <NotFound />,
     path: "*"
   }
 ];

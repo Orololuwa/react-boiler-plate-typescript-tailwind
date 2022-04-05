@@ -1,8 +1,12 @@
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { login, logOut } from "store/auth/action-creators";
+import { decrement, increment } from "store/reducers/counter";
 
 const Home = (): JSX.Element => {
-  const x = useAppSelector((state) => state.auth.isLoggedIn);
+  const { x, count } = useAppSelector((state) => ({
+    x: state.auth.isLoggedIn,
+    count: state.counter.value
+  }));
 
   const dispatch = useAppDispatch();
 
@@ -20,6 +24,23 @@ const Home = (): JSX.Element => {
         Hello world! {x && " logged In"}
       </p>
       <button onClick={testDispatch}>toggle auth state</button>
+      <div className="mt-6">
+        <div>
+          <button
+            aria-label="Increment value"
+            onClick={() => dispatch(increment())}
+          >
+            Increment
+          </button>
+          <span className="bg-primary p-4 m-2 text-white">{count}</span>
+          <button
+            aria-label="Decrement value"
+            onClick={() => dispatch(decrement())}
+          >
+            Decrement
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

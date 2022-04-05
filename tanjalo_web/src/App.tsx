@@ -4,6 +4,7 @@ import GlobalStyles from "styles/global";
 import { useRoutes } from "react-router-dom";
 import routes from "routes";
 import { Suspense } from "react";
+import Loading from "components/loading";
 
 const App = (): JSX.Element => {
   const routesHere = useRoutes(routes);
@@ -11,7 +12,7 @@ const App = (): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Suspense fallback={<div>loading...</div>}>{routesHere}</Suspense>
+      <Suspense fallback={<Loading />}>{routesHere}</Suspense>
     </ThemeProvider>
   );
 };
